@@ -7,6 +7,7 @@ import {
 // Sections
 import Home from './src/scenes/containers/home'
 import Header from './src/sections/components/header'
+import SuggestionList from './src/videos/containers/suggestion-list'
 
 // Add different color according to the platform
 const txtColor = Platform.select({
@@ -23,6 +24,7 @@ export default class App extends Component<Props> {
           <Text>NAVIGATION</Text>
         </Header>
         <Text style={styles.text}>Welcome</Text>
+        <SuggestionList />
       </Home>
     )
   }
