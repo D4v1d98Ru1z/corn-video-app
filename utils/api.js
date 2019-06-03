@@ -10,6 +10,14 @@ class Api {
     const { data } = await query.json()
     return data.movies
   }
+  /**
+   * Get the list of movies to create the categories
+   */
+  async getCategories() {
+    const query = await fetch(`${BASE_API}list_movies.json?`)
+    const { data } = await query.json()
+    return data.movies
+  }
 }
 
 export default new Api()
