@@ -24,27 +24,16 @@ export default class SuggestionList extends Component {
   renderItem = ({item}) => (
     <Suggestion {...item} />
   )
+  // Key extractor. Which gets the id from API
+  keyExtractor = item => item.id.toString()
   render() {
-    // List
-    const list = [
-      {
-        key: '1',
-        title: 'Avengers'
-      },
-      {
-        key: '2',
-        title: 'Spiderman far from home'
-      },
-      {
-        key: '3',
-        title: 'Game of Thrones'
-      },
-    ]
+    const { list } = this.props
     return (
       <Layout
         title="Recomendado para ti"
       >
         <FlatList 
+          keyExtractor={this.keyExtractor}
           data={list}
           ListEmptyComponent={this.listEmpty}
           ItemSeparatorComponent={this.itemSeparator}
