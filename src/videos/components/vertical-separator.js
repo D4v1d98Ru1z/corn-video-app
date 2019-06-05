@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 const VerticalSeparator = (props) => {
   const {text} = props
@@ -12,7 +12,6 @@ const VerticalSeparator = (props) => {
         }
       ]}
     >
-      <Text>Separador</Text>
     </View>
   )
 }
