@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {
   Platform,
   StyleSheet,
-  Text
+  Text,
+  View
 } from 'react-native';
+import Video from 'react-native-video'
 // Sections
 import Home from './src/scenes/containers/home'
 import Header from './src/sections/components/header'
@@ -40,6 +42,29 @@ export default class App extends Component<Props> {
         <Header>
           <Text>NAVIGATION</Text>
         </Header>
+        <View
+          style={{
+            flex: 1,
+            height: 100,
+          }}
+        >
+          {
+            //ResizeMode allows me to have a full size in the screen for android devices
+          }
+          <Video 
+            source={{
+              uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4'
+            }}
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+            }}
+            resizeMode='contain'
+          />
+        </View>
         <CategoryList 
           list={this.state.categoryList}
         />
