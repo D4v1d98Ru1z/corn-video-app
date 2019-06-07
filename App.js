@@ -40,7 +40,6 @@ export default class App extends Component<Props> {
         <Header>
           <Text>NAVIGATION</Text>
         </Header>
-        <Text style={styles.text}>Welcome</Text>
         <CategoryList 
           list={this.state.categoryList}
         />

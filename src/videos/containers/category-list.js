@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Text, FlatList } from 'react-native'
-import Suggestion from '../components/suggestion'
+import Category from '../components/category'
 import Separator from '../../sections/components/horizontal-separator'
 import Empty from '../components/empty'
 import Layout from '../components/category-list-layout'
 
 export default class CategoryList extends Component {
   // Render Item
-  renderItem = ({item}) => <Suggestion {...item}/>
+  renderItem = ({item}) => <Category {...item}/>
   // Item Separator Component
   itemSeparator = () => <Separator />
   // Empty component
