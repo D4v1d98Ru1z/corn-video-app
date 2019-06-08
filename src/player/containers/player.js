@@ -17,6 +17,15 @@ export default class Player extends Component {
       loading: isBuffering
     })
   }
+
+  /**
+   * on load event gets if the video is already loaded
+   */
+  onLoad = () => {
+    this.setState({
+      loading: false,
+    })
+  }
   render() {
     //ResizeMode allows me to have a full size in the screen for android devices
     return (
@@ -30,6 +39,7 @@ export default class Player extends Component {
             style={styles.video}
             resizeMode='contain'
             onBuffer={this.onBuffer}
+            onLoad={this.onLoad}
           />
         }
         loader={
