@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { StyleSheet, ActivityIndicator } from 'react-native'
+import { StyleSheet, ActivityIndicator, Text } from 'react-native'
 import Layout from '../components/layout'
 import Video from 'react-native-video'
+import ControlLayout from '../components/control-layout'
+import PlayPause from '../components/play-pause'
 
 export default class Player extends Component {
   state = {
     loading: true,
+    paused: false
   }
 
   /**
@@ -26,6 +29,13 @@ export default class Player extends Component {
       loading: false,
     })
   }
+
+  // Change the state of the play and paused button
+  playPause = () => {
+    this.setState({
+      paused: !this.state.paused
+    })
+  }
   render() {
     //ResizeMode allows me to have a full size in the screen for android devices
     return (
@@ -44,6 +54,17 @@ export default class Player extends Component {
         }
         loader={
           <ActivityIndicator />
+        }
+        controls={
+          <ControlLayout >
+            <PlayPause 
+              onPress={this.playPause}
+              paused={this.state.paused}
+            />
+            <Text>progress bar | </Text>
+            <Text>time left | </Text>
+            <Text>fullscreen | </Text>
+          </ControlLayout>
         }
       />
     )
