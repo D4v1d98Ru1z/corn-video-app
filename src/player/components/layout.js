@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 
 const Layout = (props) => {
-  const { video, loader, loading } = props
+  const { video, loader, loading, controls } = props
   return (
     <View style={styles.container}>
       <View style={styles.video}>
@@ -11,6 +11,7 @@ const Layout = (props) => {
       <View style={styles.overlay}>
         { loading && loader}
       </View>
+      {controls}
     </View>
   )
 }

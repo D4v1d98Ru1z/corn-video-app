@@ -50,6 +50,7 @@ export default class Player extends Component {
             resizeMode='contain'
             onBuffer={this.onBuffer}
             onLoad={this.onLoad}
+            paused={this.state.paused}
           />
         }
         loader={
