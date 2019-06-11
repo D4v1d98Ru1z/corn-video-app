@@ -4,11 +4,14 @@ import Layout from '../components/layout'
 import Video from 'react-native-video'
 import ControlLayout from '../components/control-layout'
 import PlayPause from '../components/play-pause'
+import Timer from '../components/timer'
 
 export default class Player extends Component {
   state = {
     loading: true,
-    paused: false
+    paused: false,
+    duration: 0,
+    currentTime: 0
   }
 
   /**
@@ -36,6 +39,12 @@ export default class Player extends Component {
       paused: !this.state.paused
     })
   }
+
+  timeLeft = (e) => {
+    this.setState({
+      currentTime: e.currentTime
+    })
+  }
   render() {
     //ResizeMode allows me to have a full size in the screen for android devices
     return (
@@ -51,6 +60,8 @@ export default class Player extends Component {
             onBuffer={this.onBuffer}
             onLoad={this.onLoad}
             paused={this.state.paused}
+            onProgress={this.timeLeft}
+            currentTime={this.state.currentTime}
           />
         }
         loader={
@@ -63,7 +74,10 @@ export default class Player extends Component {
               paused={this.state.paused}
             />
             <Text>progress bar | </Text>
-            <Text>time left | </Text>
+            <Timer 
+              duration={this.state.duration}
+              currentTime={this.state.currentTime}
+            />
             <Text>fullscreen | </Text>
           </ControlLayout>
         }
