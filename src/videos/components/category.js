@@ -10,7 +10,10 @@ const Category = (props) => {
       }}
       style={styles.wrapper}
     >
-      <Text style={styles.genre}>{genres[0]}</Text>
+      {
+        genres != null &&
+        <Text style={styles.genre}>{genres[0]}</Text>
+      }
     </ImageBackground>
   )
 }
