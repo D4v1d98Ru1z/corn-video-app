@@ -5,6 +5,7 @@ import Video from 'react-native-video'
 import ControlLayout from '../components/control-layout'
 import PlayPause from '../components/play-pause'
 import { formattedTime } from '../../libs/utilities'
+import ProgressBar from '../components/progress-bar'
 
 export default class Player extends Component {
   state = {
@@ -76,8 +77,10 @@ export default class Player extends Component {
               onPress={this.playPause}
               paused={this.state.paused}
             />
-            <Text>progress bar | </Text>
-            <Text>{this.state.currentTime} / {this.state.duration} </Text>
+            <ProgressBar 
+              currentTime={this.state.currentTime}
+              duration={this.state.duration}
+            />            
             <Text>fullscreen | </Text>
           </ControlLayout>
         }

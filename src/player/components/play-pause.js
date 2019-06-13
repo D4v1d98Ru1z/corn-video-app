@@ -21,7 +21,7 @@ const PlayPause = (props) => {
     <TouchableHighlight
       onPress={onPress}
       style={styles.container}
-      underlayColor="red"
+      underlayColor="green"
       hitSlop={{
         left: 5,
         right: 5,
