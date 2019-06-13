@@ -4,14 +4,14 @@ import Layout from '../components/layout'
 import Video from 'react-native-video'
 import ControlLayout from '../components/control-layout'
 import PlayPause from '../components/play-pause'
-import Timer from '../components/timer'
+import { formattedTime } from '../../libs/utilities'
 
 export default class Player extends Component {
   state = {
     loading: true,
     paused: false,
     duration: 0,
-    currentTime: 0
+    currentTime: 0,
   }
 
   /**
@@ -40,9 +40,13 @@ export default class Player extends Component {
     })
   }
 
-  timeLeft = (e) => {
+  // Gets the duration and the current time of the video
+  onProgress = e => {
+    let currentTime = e.currentTime
+    let duration = e.seekableDuration
     this.setState({
-      currentTime: e.currentTime
+      currentTime: formattedTime(currentTime),
+      duration: formattedTime(duration)
     })
   }
   render() {
@@ -60,8 +64,7 @@ export default class Player extends Component {
             onBuffer={this.onBuffer}
             onLoad={this.onLoad}
             paused={this.state.paused}
-            onProgress={this.timeLeft}
-            currentTime={this.state.currentTime}
+            onProgress={this.onProgress}
           />
         }
         loader={
@@ -74,10 +77,7 @@ export default class Player extends Component {
               paused={this.state.paused}
             />
             <Text>progress bar | </Text>
-            <Timer 
-              duration={this.state.duration}
-              currentTime={this.state.currentTime}
-            />
+            <Text>{this.state.currentTime} / {this.state.duration} </Text>
             <Text>fullscreen | </Text>
           </ControlLayout>
         }
