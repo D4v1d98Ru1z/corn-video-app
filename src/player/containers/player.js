@@ -6,6 +6,7 @@ import ControlLayout from '../components/control-layout'
 import PlayPause from '../components/play-pause'
 import { formattedTime } from '../../libs/utilities'
 import ProgressBar from '../components/progress-bar'
+import FullScreen from '../components/fullscreen'
 
 export default class Player extends Component {
   state = {
@@ -13,6 +14,7 @@ export default class Player extends Component {
     paused: false,
     duration: 0,
     currentTime: 0,
+    fullScreen: false,
   }
 
   /**
@@ -50,6 +52,25 @@ export default class Player extends Component {
       duration: formattedTime(duration)
     })
   }
+
+  // Video Ref
+  videoRef = element => {
+    this.video = element 
+  }
+
+  // FullScreen
+  onFullScreen = () => {
+    this.setState({
+      fullScreen: !this.state.fullScreen
+    })
+    
+    // Validate if is on fullscreen or not
+    this.state.fullScreen ? 
+      this.video.dismissFullscreenPlayer()
+    :
+      this.video.presentFullscreenPlayer()
+  }
+
   render() {
     //ResizeMode allows me to have a full size in the screen for android devices
     return (
@@ -62,6 +83,7 @@ export default class Player extends Component {
             }}
             style={styles.video}
             resizeMode='contain'
+            ref={this.videoRef}
             onBuffer={this.onBuffer}
             onLoad={this.onLoad}
             paused={this.state.paused}
@@ -81,7 +103,10 @@ export default class Player extends Component {
               currentTime={this.state.currentTime}
               duration={this.state.duration}
             />            
-            <Text>fullscreen | </Text>
+            <FullScreen 
+              onPress={this.onFullScreen}
+              fullScreen={this.state.fullScreen}
+            />
           </ControlLayout>
         }
       />
