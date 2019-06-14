@@ -15,6 +15,7 @@ export default class Player extends Component {
     duration: 0,
     currentTime: 0,
     fullScreen: false,
+    progress: 0.0
   }
 
   /**
@@ -49,7 +50,8 @@ export default class Player extends Component {
     let duration = e.seekableDuration
     this.setState({
       currentTime: formattedTime(currentTime),
-      duration: formattedTime(duration)
+      duration: formattedTime(duration),
+      progress: (currentTime / duration)
     })
   }
 
@@ -102,6 +104,7 @@ export default class Player extends Component {
             <ProgressBar 
               currentTime={this.state.currentTime}
               duration={this.state.duration}
+              progress={this.state.progress}
             />            
             <FullScreen 
               onPress={this.onFullScreen}
