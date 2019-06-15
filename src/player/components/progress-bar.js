@@ -2,16 +2,16 @@ import React from 'react'
 import { View, Text, StyleSheet, ProgressBarAndroid } from 'react-native'
 
 const ProgressBar = (props) => {
-  const{ duration, currentTime } = props
+  const{ duration, currentTime, progress } = props
   return (
     <View>
       <ProgressBarAndroid 
         color="green" 
         indeterminate={false}
         styleAttr="Horizontal"
-        progress={0.5}
+        progress={progress}
         animating={true}
-        style={styles.progressBarAndroid}/>    
+        style={styles.progressBarAndroid}
       />
       <View>
         <Text style={styles.timer}>{currentTime} / {duration} </Text>

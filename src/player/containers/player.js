@@ -90,6 +90,7 @@ export default class Player extends Component {
             onLoad={this.onLoad}
             paused={this.state.paused}
             onProgress={this.onProgress}
+            
           />
         }
         loader={
