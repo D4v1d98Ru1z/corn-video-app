@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, ProgressBarAndroid } from 'react-native'
 const ProgressBar = (props) => {
   const{ duration, currentTime, progress } = props
   return (
-    <View>
+    <View style={styles.container}>
       <ProgressBarAndroid 
         color="green" 
         indeterminate={false}
@@ -22,12 +22,15 @@ const ProgressBar = (props) => {
 
 // Styles
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+  },
   timer: {
     color: 'white',
     fontWeight: 'bold',
   },
   progressBarAndroid: {
-    width: 240
+    width: 150
   }
 })
 
