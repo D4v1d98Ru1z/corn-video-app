@@ -13,7 +13,7 @@ const ProgressBar = (props) => {
         animating={true}
         style={styles.progressBarAndroid}
       />
-      <View>
+      <View style={styles.box}>
         <Text style={styles.timer}>{currentTime} / {duration} </Text>
       </View>
     </View>
@@ -30,8 +30,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   progressBarAndroid: {
-    width: 150
-  }
+    width: 100
+  },
+  box: {
+    paddingLeft: 10,
+  },
 })
 
 export default ProgressBar

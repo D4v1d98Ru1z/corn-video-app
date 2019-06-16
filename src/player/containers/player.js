@@ -7,6 +7,7 @@ import PlayPause from '../components/play-pause'
 import { formattedTime } from '../../libs/utilities'
 import ProgressBar from '../components/progress-bar'
 import FullScreen from '../components/fullscreen'
+import Volume from '../components/volume'
 
 export default class Player extends Component {
   state = {
@@ -90,7 +91,6 @@ export default class Player extends Component {
             onLoad={this.onLoad}
             paused={this.state.paused}
             onProgress={this.onProgress}
-            
           />
         }
         loader={
@@ -107,6 +107,7 @@ export default class Player extends Component {
               duration={this.state.duration}
               progress={this.state.progress}
             />            
+            <Volume />
             <FullScreen 
               onPress={this.onFullScreen}
               fullScreen={this.state.fullScreen}
