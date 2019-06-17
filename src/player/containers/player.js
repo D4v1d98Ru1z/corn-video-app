@@ -16,7 +16,9 @@ export default class Player extends Component {
     duration: 0,
     currentTime: 0,
     fullScreen: false,
-    progress: 0.0
+    progress: 0.0,
+    volume: 0,
+    muted: false,
   }
 
   /**
@@ -74,6 +76,25 @@ export default class Player extends Component {
       this.video.presentFullscreenPlayer()
   }
 
+  // Event to change the volume of the video
+  onVolume = () => {
+    let volume = this.state.volume + 0.5
+    let muted = this.state.muted
+    
+    if(volume > 1) {
+      volume = 0
+      muted = true
+    }
+    else {
+      muted = false
+    }
+
+    this.setState({
+      volume,
+      muted
+    })
+  }
+
   render() {
     //ResizeMode allows me to have a full size in the screen for android devices
     return (
@@ -91,6 +112,7 @@ export default class Player extends Component {
             onLoad={this.onLoad}
             paused={this.state.paused}
             onProgress={this.onProgress}
+            volume={this.state.volume}
           />
         }
         loader={
@@ -107,7 +129,11 @@ export default class Player extends Component {
               duration={this.state.duration}
               progress={this.state.progress}
             />            
-            <Volume />
+            <Volume 
+              onPress={this.onVolume}
+              volume={this.state.volume}
+              muted={this.state.muted}
+            />
             <FullScreen 
               onPress={this.onFullScreen}
               fullScreen={this.state.fullScreen}

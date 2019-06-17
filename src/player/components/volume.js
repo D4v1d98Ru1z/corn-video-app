@@ -1,10 +1,15 @@
 import React from 'react'
 import { TouchableHighlight, Text, StyleSheet } from 'react-native'
 
-const Volume = () => {
+const Volume = (props) => {
+  const {
+    onPress,
+    volume,
+    muted
+  } = props
   return (
-    // TODO: make this button works!
     <TouchableHighlight
+      onPress={onPress}
       style={styles.container}
       underlayColor="green"
       hitSlop={{
@@ -14,7 +19,15 @@ const Volume = () => {
         bottom: 5,
       }}
     >
-      <Text style={styles.button}>unmute</Text>
+      {
+        muted ? 
+        <Text style={styles.button}>unmute</Text>
+        :
+        volume === .5 ?
+        <Text style={styles.button}>Down</Text>
+        :
+        <Text style={styles.button}>Up</Text>
+      }
     </TouchableHighlight>
   )
 }
