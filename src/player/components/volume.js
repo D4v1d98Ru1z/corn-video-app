@@ -1,22 +1,12 @@
 import React from 'react'
-import { 
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  StyleSheet
-} from 'react-native'
+import { TouchableHighlight, Text, StyleSheet } from 'react-native'
 
-const PlayPause = (props) => {
+const Volume = (props) => {
   const {
     onPress,
-    paused
+    volume,
+    muted
   } = props
-
-  /**
-   * Touchable components
-   * hitSlop property creates a touchable radius around the button
-   */
   return (
     <TouchableHighlight
       onPress={onPress}
@@ -30,18 +20,19 @@ const PlayPause = (props) => {
       }}
     >
       {
-        paused ? 
-        <Text style={styles.button}>PLAY</Text> 
-        : 
-        <Text style={styles.button}>PAUSE</Text>
+        muted ? 
+        <Text style={styles.button}>unmute</Text>
+        :
+        volume === .5 ?
+        <Text style={styles.button}>Down</Text>
+        :
+        <Text style={styles.button}>Up</Text>
       }
-      
-      
     </TouchableHighlight>
   )
 }
 
-// Styles 
+// Styles
 const styles = StyleSheet.create({
   button: {
     color: 'white',
@@ -61,4 +52,6 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PlayPause
+export default Volume
+
+
