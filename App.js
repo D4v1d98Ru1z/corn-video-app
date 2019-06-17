@@ -12,6 +12,9 @@ import CategoryList from './src/videos/containers/category-list'
 import Player from './src/player/containers/player'
 // API
 import API from './utils/api'
+// Redux
+import { Provider } from 'react-redux'
+import store from './store'
 
 // Add different color according to the platform
 const txtColor = Platform.select({
@@ -22,33 +25,46 @@ const txtColor = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    suggestionList: [],
-    categoryList: []
+    // suggestionList: [],
+    // categoryList: []
   }
   async componentDidMount() {
-    const movies = await API.getSuggestion(10)
-    const categories = await API.getCategories()
-    console.log(movies)
-    console.log(categories)
-    this.setState({
-      suggestionList: movies,
-      categoryList: categories
+    // Getting the data from API and dispatch the actions
+    const suggestionList = await API.getSuggestion(10)
+    // Dispatch actions
+    store.dispatch({
+      type: 'SET_SUGGESTION_LIST',
+      payload: {
+        suggestionList
+      }
     })
+    const categoryList = await API.getCategories()
+    // Dispatch actions
+    store.dispatch({
+      type: 'SET_CATEGORY_LIST',
+      payload: {
+        categoryList
+      }
+    })    
   }
   render() {
     return (
-      <Home>
-        <Header>
-          <Text>NAVIGATION</Text>
-        </Header>
-        <Player />
-        <CategoryList 
-          list={this.state.categoryList}
-        />
-        <SuggestionList 
-          list={this.state.suggestionList}
-        />
-      </Home>
+      <Provider
+        store={store}
+      >
+        <Home>
+          <Header>
+            <Text>NAVIGATION</Text>
+          </Header>
+          <Player />
+          <CategoryList 
+            // list={this.state.categoryList}
+          />
+          <SuggestionList 
+            // list={this.state.suggestionList}
+          />
+        </Home>
+      </Provider>
     )
   }
 }

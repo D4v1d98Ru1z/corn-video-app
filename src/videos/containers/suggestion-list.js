@@ -7,8 +7,15 @@ import Layout from '../components/suggestion-list-layout'
 import Empty from '../components/empty'
 import Separator from '../components/vertical-separator'
 import Suggestion from '../components/suggestion'
+import {connect} from 'react-redux'
 
-export default class SuggestionList extends Component {
+function mapStateToProps(state) {
+ return {
+   list: state.suggestionList
+ }
+}
+
+class SuggestionList extends Component {
   /**
    * Empty component
    * if the list is empty
@@ -43,3 +50,5 @@ export default class SuggestionList extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps)(SuggestionList)

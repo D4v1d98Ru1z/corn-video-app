@@ -4,8 +4,22 @@ import Category from '../components/category'
 import Separator from '../../sections/components/horizontal-separator'
 import Empty from '../components/empty'
 import Layout from '../components/category-list-layout'
+import { connect } from 'react-redux'
 
-export default class CategoryList extends Component {
+/**
+ * Map State to Props function selects parts of the Redux state and passes it in 
+ * as props to the component that connect() is applied to. 
+ * That means that the structure of the state that your component gets, 
+ * is not the same structure as the Redux state.
+ * @param {Object} state 
+ */
+function mapStateToProps(state) {
+  return {
+    list: state.categoryList
+  }
+}
+
+class CategoryList extends Component {
   // Render Item
   renderItem = ({item}) => <Category {...item}/>
   // Item Separator Component
@@ -33,3 +47,5 @@ export default class CategoryList extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps) (CategoryList)
