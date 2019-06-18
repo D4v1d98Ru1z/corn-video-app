@@ -57,12 +57,8 @@ export default class App extends Component<Props> {
             <Text>NAVIGATION</Text>
           </Header>
           <Player />
-          <CategoryList 
-            // list={this.state.categoryList}
-          />
-          <SuggestionList 
-            // list={this.state.suggestionList}
-          />
+          <CategoryList />
+          <SuggestionList />
         </Home>
       </Provider>
     )
