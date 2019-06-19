@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
 import {
   Platform,
-  StyleSheet,
-  Text
+  StyleSheet
 } from 'react-native';
 // Sections
-import Home from './src/scenes/containers/home'
-import Header from './src/sections/components/header'
-import SuggestionList from './src/videos/containers/suggestion-list'
-import CategoryList from './src/videos/containers/category-list'
-import Player from './src/player/containers/player'
-// API
-import API from './utils/api'
+import AppLayout from './src/app'
+import Loading from './src/sections/components/loading'
+
 // Redux
 import { Provider } from 'react-redux'
-import store from './store'
+import { store, persistor } from './store'
+// Redux Persistor
+import { PersistGate } from 'redux-persist/integration/react'
 
 // Add different color according to the platform
 const txtColor = Platform.select({
@@ -24,42 +21,18 @@ const txtColor = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
-  state = {
-    // suggestionList: [],
-    // categoryList: []
-  }
-  async componentDidMount() {
-    // Getting the data from API and dispatch the actions
-    const suggestionList = await API.getSuggestion(10)
-    // Dispatch actions
-    store.dispatch({
-      type: 'SET_SUGGESTION_LIST',
-      payload: {
-        suggestionList
-      }
-    })
-    const categoryList = await API.getCategories()
-    // Dispatch actions
-    store.dispatch({
-      type: 'SET_CATEGORY_LIST',
-      payload: {
-        categoryList
-      }
-    })    
-  }
+  
   render() {
     return (
       <Provider
         store={store}
       >
-        <Home>
-          <Header>
-            <Text>NAVIGATION</Text>
-          </Header>
-          <Player />
-          <CategoryList />
-          <SuggestionList />
-        </Home>
+        <PersistGate
+          loading={<Loading />}
+          persistor={persistor}
+        >
+          <AppLayout />
+        </PersistGate>
       </Provider>
     )
   }
