@@ -73,7 +73,9 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+    // Solution added by Stackoverflow
+    jsBundleDirRelease: "$buildDir/intermediates/merged_assets/release/mergeReleaseAssets/out"
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
