@@ -34,11 +34,13 @@ class AppLayout extends Component {
 
   render() {
     return (
+      this.props.selectedMovie ? 
+      <Movie />
+      :
       <Home>
         <Header>
           <Text>NAVIGATION</Text>
         </Header>
-        <Movie />
         <CategoryList />
         <SuggestionList />
       </Home>
@@ -46,4 +48,11 @@ class AppLayout extends Component {
   }
 }
 
-export default connect(null)(AppLayout)
+function mapStateToProps(state) {
+  // Returning the selected movie from the state 
+  return {
+    selectedMovie: state.selectedMovie
+  }
+}
+
+export default connect(mapStateToProps)(AppLayout)

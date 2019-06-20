@@ -26,10 +26,25 @@ class SuggestionList extends Component {
    */
   itemSeparator = () => <Separator />
   /**
+   * Function that brings the video from the state
+   */
+  viewMovie = item => {
+    // Dispatch the action of a movie selected
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: item,
+      }
+    })
+  }
+  /**
    * Render Item
    */
   renderItem = ({item}) => (
-    <Suggestion {...item} />
+    <Suggestion 
+      {...item} 
+      onPress={() => {this.viewMovie(item)}}
+    />
   )
   // Key extractor. Which gets the id from API
   keyExtractor = item => item.id.toString()
