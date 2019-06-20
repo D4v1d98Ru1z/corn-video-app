@@ -17,7 +17,7 @@ export default class Player extends Component {
     currentTime: 0,
     fullScreen: false,
     progress: 0.0,
-    volume: 0,
+    volume: 1,
     muted: false,
   }
 
