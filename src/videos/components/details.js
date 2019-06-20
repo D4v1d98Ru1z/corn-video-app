@@ -1,14 +1,16 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import { WebView } from 'react-native-webview'
 
 const Details = (props) => {
   const {
     title,
     medium_cover_image,
-    description_full
+    description_full,
+    yt_trailer_code
   } = props
   return (
-    <View>
+    <ScrollView>
       <View style={styles.top}>
         <Text>{title}</Text>
       </View>
@@ -23,7 +25,14 @@ const Details = (props) => {
           <Text style={styles.description}>{description_full}</Text>
         </View>
       </View>
-    </View>
+      <View style={styles.trailer}>
+        <WebView 
+          source={{
+            uri: `https://www.youtube.com/embed/${yt_trailer_code}`
+          }}
+        />
+      </View>
+    </ScrollView>
   )
 }
 
@@ -33,6 +42,7 @@ const styles = StyleSheet.create({
   },
   trailer: {
     height: 200,
+    marginBottom: 10,
   },
   details: {
     flexDirection: 'row',
