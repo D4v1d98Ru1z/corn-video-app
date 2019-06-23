@@ -10,9 +10,9 @@ import Suggestion from '../components/suggestion'
 import {connect} from 'react-redux'
 
 function mapStateToProps(state) {
- return {
-   list: state.suggestionList
- }
+  return {
+    list: state.suggestionList
+  }
 }
 
 class SuggestionList extends Component {
@@ -52,7 +52,7 @@ class SuggestionList extends Component {
     const { list } = this.props
     return (
       <Layout
-        title="Recomendado para ti"
+        title="Recommended for you"
       >
         <FlatList 
           keyExtractor={this.keyExtractor}
