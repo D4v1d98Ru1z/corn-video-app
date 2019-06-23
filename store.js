@@ -7,9 +7,9 @@ import reducer from './reducers/videos'
  * Initializing the store withe the reducers, state
  * 
  * -Old store-
- const store = createStore(reducer, {
-   categoryList: [],
-   suggestionList: []
+  const store = createStore(reducer, {
+    categoryList: [],
+    suggestionList: []
   })
 */
 
