@@ -3,7 +3,7 @@ import {
   Platform,
   StyleSheet
 } from 'react-native';
-// Sections
+// Components
 import AppLayout from './src/app'
 import Loading from './src/sections/components/loading'
 
