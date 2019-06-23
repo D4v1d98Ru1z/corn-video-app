@@ -33,7 +33,7 @@ class CategoryList extends Component {
     const { list } = this.props
     return (
       <Layout
-        title="Categorias"
+        title="Categories"
       >
         <FlatList 
           horizontal
