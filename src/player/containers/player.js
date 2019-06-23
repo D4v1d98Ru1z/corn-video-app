@@ -124,11 +124,12 @@ export default class Player extends Component {
               onPress={this.playPause}
               paused={this.state.paused}
             />
-            <ProgressBar 
+            {/* <ProgressBar 
               currentTime={this.state.currentTime}
               duration={this.state.duration}
               progress={this.state.progress}
-            />            
+            />             */}
+            <Text style={{color: 'white'}}>{this.state.currentTime} / {this.state.duration} </Text>
             <Volume 
               onPress={this.onVolume}
               volume={this.state.volume}
