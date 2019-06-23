@@ -18,6 +18,17 @@ class Api {
     const { data } = await query.json()
     return data.movies
   }
+
+  /**
+   * Search movie and get the first element
+   * @param {string} title movie title
+   */
+  async searchMovie(title) {
+    // Fetch the API bringing only one movie and sorting with the most rating
+    const query = await fetch(`${BASE_API}list_movies.json?limit=1&sort_by=rating&query_term=${title}`)
+    const { data } = await query.json()
+    return data.movies
+  }
 }
 
 export default new Api()

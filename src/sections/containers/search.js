@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
 import { StyleSheet, TextInput } from 'react-native'
+// Redux
+import { connect } from 'react-redux'
+// API
+import API from '../../../utils/api'
 
 class Search extends Component {
   state = {
     text: '',
   }
 
-  handleSubmit = () => {
+  // Submit the movie fetched from the API and dispatch the action
+  handleSubmit = async () => {
     // Get the state from handleChangeText
-    console.log(this.state.text)
+    const movies = await API.searchMovie(this.state.text)
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: movies[0]
+      }
+    })
   }
 
   /**
@@ -45,4 +56,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Search
+export default connect(null)(Search)
