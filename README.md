@@ -1,4 +1,4 @@
-# Corn Video App
+# :corn: Corn Video App 
 
 Corn Video is an application that shows all the best movies using the [YTS](https://yts.lt/) API.
 
@@ -26,7 +26,7 @@ npm i
 Finally, you can test it on development running the followed commands from react-native-cli. 
 
 ```
-# Run Android enviroment
+# Run Android environment
 react-native run-android
 
 # Run iOS environment
