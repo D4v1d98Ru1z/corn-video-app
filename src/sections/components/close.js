@@ -16,7 +16,7 @@ const Close = props => {
 // Styles
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#14b739',
+    backgroundColor: '#FDD835',
     borderRadius: 12,
     width: 25,
     height: 25,

@@ -6,7 +6,7 @@ const ProgressBar = (props) => {
   return (
     <View style={styles.container}>
       <ProgressBarAndroid 
-        color="green" 
+        color="#FDD835" 
         indeterminate={false}
         styleAttr="Horizontal"
         progress={progress}

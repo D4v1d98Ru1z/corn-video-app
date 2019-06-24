@@ -7,7 +7,7 @@ const FullScreen = (props) => {
     <TouchableHighlight
       onPress={onPress}
       style={styles.container}
-      underlayColor="green"
+      underlayColor="#FDD835"
       hitSlop={{
         left: 5,
         right: 5,
