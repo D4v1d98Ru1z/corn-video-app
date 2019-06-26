@@ -1,5 +1,7 @@
 # :corn: Corn Video App 
 
+![Thumbnail](./assets/thumbnail.png)
+
 Corn Video is an application that shows all the best movies using the [YTS](https://yts.lt/) API.
 
 ## Getting Started
