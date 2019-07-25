@@ -13,7 +13,10 @@ const Loading = () => {
         source={require('../../../assets/logo.png')}
         style={styles.logo}
       />
-      <ActivityIndicator />
+      <ActivityIndicator 
+        size="large"
+        color="#FDD835"
+      />
     </View>
   )
 }

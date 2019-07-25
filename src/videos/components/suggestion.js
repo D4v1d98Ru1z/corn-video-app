@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     color: '#44546b'
   },
   year: {
-    backgroundColor: '#70b124',
+    backgroundColor: '#FDD835',
     paddingVertical: 4,
     paddingHorizontal: 6,
     color: 'white',

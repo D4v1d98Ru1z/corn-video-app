@@ -116,7 +116,10 @@ export default class Player extends Component {
           />
         }
         loader={
-          <ActivityIndicator />
+          <ActivityIndicator 
+            size="large"
+            color="#FDD835"
+          />
         }
         controls={
           <ControlLayout >

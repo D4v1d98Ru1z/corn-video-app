@@ -1,4 +1,6 @@
-# Corn Video App
+# :corn: Corn Video App 
+
+![Thumbnail](./assets/thumbnail.png)
 
 Corn Video is an application that shows all the best movies using the [YTS](https://yts.lt/) API.
 
@@ -26,7 +28,7 @@ npm i
 Finally, you can test it on development running the followed commands from react-native-cli. 
 
 ```
-# Run Android enviroment
+# Run Android environment
 react-native run-android
 
 # Run iOS environment
@@ -47,8 +49,6 @@ Please feel free to send pull request if you want to contribute!
 
 * **David Ruiz** - *Development* - [David Ruiz](https://github.com/D4v1d98Ru1z)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License.
