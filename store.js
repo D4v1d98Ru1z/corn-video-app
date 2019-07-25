@@ -1,7 +1,9 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import reducer from './reducers/videos'
+import reducer from './reducers/index'
+// Redux helper middleware
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 
 /**
  * Initializing the store withe the reducers, state
@@ -22,7 +24,19 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer)
 
-const store = createStore(persistedReducer)
+/**
+ * navigation middleware
+ * Middlewares recieves new functions that returns the new state to manipulate them
+ */
+const navigationMiddleware = createReactNavigationReduxMiddleware(
+  'root',
+  state => state.navigation
+)
+
+const store = createStore(
+  persistedReducer,
+  applyMiddleware(navigationMiddleware)
+)
 const persistor = persistStore(store)
 
 export { store, persistor }

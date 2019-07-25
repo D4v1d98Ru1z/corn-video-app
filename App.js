@@ -6,6 +6,8 @@ import {
 // Components
 import AppLayout from './src/app'
 import Loading from './src/sections/components/loading'
+// Stack Navigator
+import AppNavigatorWithState from './src/app-navigator-with-state'
 
 // Redux
 import { Provider } from 'react-redux'
@@ -31,7 +33,7 @@ export default class App extends Component<Props> {
           loading={<Loading />}
           persistor={persistor}
         >
-          <AppLayout />
+          <AppNavigatorWithState />
         </PersistGate>
       </Provider>
     )
